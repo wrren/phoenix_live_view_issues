@@ -8,3 +8,5 @@ The expected behaviour, upon hitting clicking of these `live_link` elements, is 
 updated. However, instead the contents of the `BreadcrumbsLive` are updated, resulting in doubling of the `PageLive` content. The
 application works as expected only if the `PageLive` LiveView is the first LiveView rendered; either by moving the `BreadcrumbsLive`
 LiveView past it in the DOM or by removing `BreadcrumbsLive` altogether.
+
+![](reproduction.gif)
