@@ -17,7 +17,8 @@ defmodule PhoenixLiveViewIssuesWeb.Router do
   scope "/", PhoenixLiveViewIssuesWeb do
     pipe_through :browser
 
-    live "/", PageLive
+    live "/",       PageLive
+    live "/:page",  PageLive
   end
 
   # Other scopes may use custom stacks.
