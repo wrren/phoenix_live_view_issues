@@ -1,20 +1,10 @@
-# PhoenixLiveViewIssues
+# PushState Bug Reproduction
 
-To start your Phoenix server:
+This application renders a layout containing two LiveViews: `PageLive` and `BreadcrumbsLive`. The application router contains only
+two routes, both of which point to `PageLive`. `PageLive` renders a template that includes `live_link` elements that link to
+`PageLive` with new path parameters.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+The expected behaviour, upon hitting clicking of these `live_link` elements, is that the contents of the `PageLive` LiveView are
+updated. However, instead the contents of the `BreadcrumbsLive` are updated, resulting in doubling of the `PageLive` content. The
+application works as expected only if the `PageLive` LiveView is the first LiveView rendered; either by moving the `BreadcrumbsLive`
+LiveView past it in the DOM or by removing `BreadcrumbsLive` altogether.
