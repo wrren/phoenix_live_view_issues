@@ -17,7 +17,7 @@ defmodule PhoenixLiveViewIssuesWeb.Router do
   scope "/", PhoenixLiveViewIssuesWeb do
     pipe_through :browser
 
-    live "/test", TestLive
+    live "/test", TestLive, layout: {PhoenixLiveViewIssuesWeb.LayoutView, :alternative}
     live "/",     PageLive
   end
 end
